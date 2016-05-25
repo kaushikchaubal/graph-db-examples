@@ -1,0 +1,25 @@
+// Create
+int fund = g.newNodeType("Fund");
+int fundNameAttribute = g.newAttribute(fund, "name", DataType.String, AttributeKind.Indexed);
+long awesomeFund = g.newNode(fund);
+g.setAttribute(awesomeFund, fundNameAttribute, value.setString("AwesomeFund"));	
+
+int portfolioManager = g.newNodeType("PortfolioManager");
+int portfolioManagerAttribute = g.newAttribute(portfolioManager, "name", DataType.String, AttributeKind.Indexed);
+long superman = g.newNode(portfolioManager);
+g.setAttribute(superman, portfolioManagerAttribute, value.setString("Superman"));
+
+int equity = g.newNodeType("Equity");
+int equityAttribute = g.newAttribute(equity, "name", DataType.String, AttributeKind.Indexed);
+long microsoft = g.newNode(equity);
+g.setAttribute(microsoft, equityAttribute, value.setString("Microsoft"));
+
+int manageType = g.NewEdgeType("MANAGES", false, false);
+long manages = g.newEdge(manageType, superman, awesomeFund);
+
+int containType = g.NewEdgeType("CONTAINS", false, false);
+long contains = g.newEdge(containType, awesomeFund, microsoft);
+
+// Query
+Objects managedBySuperman = g.neighbors(superman, manageType, EdgesDirection.Outgoing);
+System.out.println(managedBySuperman);
