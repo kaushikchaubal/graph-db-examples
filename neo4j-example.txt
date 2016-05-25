@@ -12,3 +12,7 @@ DELETE n
 
 // Query
 Match (n) RETURN n;
+
+MATCH(PortfolioManager) WHERE (PortfolioManager)-[:MANAGES]-({name:'Microsoft'}) RETURN PortfolioManager
+MATCH(Fund)--(Equity) RETURN Equity.name
+
