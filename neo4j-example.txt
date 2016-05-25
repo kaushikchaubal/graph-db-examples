@@ -1,0 +1,10 @@
+// CREATE
+create (AwesomeFund: Fund {name:'AwesomeFund'}), 
+(Microsoft: Equity {name:'Microsoft'}),
+(Superman: PortfolioManager {name:'Superman'}), 
+
+(AwesomeFund)-[:CONTAINS]->(Microsoft),
+(Superman)-[:MANAGES]->(AwesomeFund)
+
+// Query
+Match (n) RETURN n;
