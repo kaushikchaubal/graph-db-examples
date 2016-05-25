@@ -6,5 +6,9 @@ create (AwesomeFund: Fund {name:'AwesomeFund'}),
 (AwesomeFund)-[:CONTAINS]->(Microsoft),
 (Superman)-[:MANAGES]->(AwesomeFund)
 
+// DELETE
+MATCH (n) DETACH
+DELETE n
+
 // Query
 Match (n) RETURN n;
