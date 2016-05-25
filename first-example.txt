@@ -1,0 +1,43 @@
+// CREATE
+create (AwesomeFund: Fund {name:'AwesomeFund'}), (SmartFund: Fund {name:'SmartFund'}),
+(Banking: Sector {name:'Banking'}), (Software: Sector {name:'Software'}), 
+(US: Country {name:'US'}), (UK: Country {name:'UK'}), (Germany: Country {name:'Germany'}),
+(Barclays: Equity {name:'Barclays'}), (BankOfAmerica: Equity {name:'BankOfAmerica'}), (Deutsche: Equity {name:'Deutsche'}),
+(Apple: Equity {name:'Apple'}), (Microsoft: Equity {name:'Microsoft'}), (SAP: Equity {name:'SAP'}),
+(USTreasury5Yr: FixedIncome {name:'USTreasury5Yr'}), (UKGilt10Yr: FixedIncome {name:'UKGilt10Yr'}), (EuroBond8Yr: FixedIncome {name:'EuroBond8Yr'}),
+(CashDeposit3M: Cash {name:'CashDeposit3M'}), (CommercialPaper4m: Cash {name:'CommercialPaper4m'}),
+(Superman: PortfolioManager {name:'Superman'}), (Batman: PortfolioManager {name: 'Batman'}),
+
+(Barclays)-[:IS_IN]->(Banking), (Barclays)-[:REGISTERED_IN]->(UK),
+(BankOfAmerica)-[:IS_IN]->(Banking), (BankOfAmerica)-[:REGISTERED_IN]->(US),
+(Deutsche)-[:IS_IN]->(Banking), (Deutsche)-[:REGISTERED_IN]->(Germany),
+(Apple)-[:IS_IN]->(Software), (Apple)-[:REGISTERED_IN]->(US),
+(Microsoft)-[:IS_IN]->(Software), (Microsoft)-[:REGISTERED_IN]->(US),
+(SAP)-[:IS_IN]->(Software), (SAP)-[:REGISTERED_IN]->(Germany),
+
+(USTreasury5Yr)-[:REGISTERED_IN]->(US), 
+(UKGilt10Yr)-[:REGISTERED_IN]->(UK), 
+(EuroBond8Yr)-[:REGISTERED_IN]->(Germany),
+(CashDeposit3M)-[:REGISTERED_IN]->(US), 
+(CommercialPaper4m)-[:REGISTERED_IN]->(US),
+
+(AwesomeFund)-[:CONTAINS]->(Barclays),
+(AwesomeFund)-[:CONTAINS]->(BankOfAmerica),
+(AwesomeFund)-[:CONTAINS]->(Deutsche),
+(AwesomeFund)-[:CONTAINS]->(Apple),
+(AwesomeFund)-[:CONTAINS]->(Microsoft),
+(AwesomeFund)-[:CONTAINS]->(SAP),
+(AwesomeFund)-[:CONTAINS]->(USTreasury5Yr),
+(AwesomeFund)-[:CONTAINS]->(UKGilt10Yr),
+(AwesomeFund)-[:CONTAINS]->(EuroBond8Yr),
+(AwesomeFund)-[:CONTAINS]->(CashDeposit3M),
+(AwesomeFund)-[:CONTAINS]->(CommercialPaper4m),
+
+(SmartFund)-[:CONTAINS]->(Barclays),
+(SmartFund)-[:CONTAINS]->(Apple),
+(SmartFund)-[:CONTAINS]->(USTreasury5Yr),
+(SmartFund)-[:CONTAINS]->(CashDeposit3M),
+
+(Superman)-[:MANAGES]->(AwesomeFund),
+(Batman)-[:MANAGES]->(SmartFund)
+
