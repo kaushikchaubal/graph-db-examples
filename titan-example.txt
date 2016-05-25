@@ -1,0 +1,14 @@
+// Create
+graph = TinkerGraph.open()
+awesomeFund = graph.addVertex(label, "Fund", "name", "AwesomeFund")
+superman = graph.addVertex(label, "PortfolioManager", "name", "Superman")
+microsoft = graph.addVertex(label, "Equity", "name", "Microsoft")
+awesomeFund.addEdge("CONTAINS", microsoft)
+superman.addEdge("MANAGES", awesomeFund)
+
+
+// Query
+traversal = graph.traversal()
+traversal.V().has("name", awesomeFund).values("name")
+traversal.V().out("MANAGES").values("name")
+traversal.V().in("MANAGES").values("name")
