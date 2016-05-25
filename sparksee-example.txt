@@ -22,4 +22,14 @@ long contains = g.newEdge(containType, awesomeFund, microsoft);
 
 // Query
 Objects managedBySuperman = g.neighbors(superman, manageType, EdgesDirection.Outgoing);
-System.out.println(managedBySuperman);
+
+ObjectsIterator it = managedBySuperman.iterator();
+while (it.hasNext()) {
+  	long peopleOid = it.next();
+  	g.getAttribute(peopleOid, fundNameAttribute, value);
+  	System.out.println("Fund managed by Superman: " + value.getString());
+}
+
+// ********************** Closing the database ******************************* //
+it.close();
+managedBySuperman.close();
